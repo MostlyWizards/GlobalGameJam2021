@@ -2,8 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum E_Collectable
+{
+    Wood = 0,
+    Metal,
+    Rope
+}
+
 public class Collectable : MonoBehaviour
 {
+    public E_Collectable type;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,10 +25,9 @@ public class Collectable : MonoBehaviour
             Object.Destroy(gameObject);
     }
 
-    void OnTriggerEnter(Collider collider)
+    void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Trigger");
-        if (collider.GetComponent<ShipMovement>())
+        if (collision.rigidbody.GetComponent<Player>() || collision.rigidbody.GetComponent<Obstacle>())
             Object.Destroy(gameObject);
     }
 }
