@@ -26,9 +26,8 @@ public class Player : MonoBehaviour
     {
         var map = actions.FindActionMap("Ship");
         map["Eat"].performed += OnEatFish;
-
         hunger = startHunger;
-        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -41,7 +40,10 @@ public class Player : MonoBehaviour
             --hungerTimer;
         }
         if (hunger <= 0)
+        {
+            Debug.Log("Hunger death");
             UnityEditor.EditorApplication.ExitPlaymode();
+        }
     }
 
     void OnCollisionEnter(Collision collision)

@@ -58,7 +58,10 @@ public class ShipStatus : MonoBehaviour
             StartCoroutine(corroutine);
         }
         if (currentLife < 0)
+        {
+            Debug.Log("Ship destroyed");
             UnityEditor.EditorApplication.ExitPlaymode();
+        }
     }
 
     IEnumerator WasHitted()

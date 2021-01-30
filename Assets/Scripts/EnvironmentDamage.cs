@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class EnvironmentDamage : MonoBehaviour
 {
     ShipStatus shipStatus;
-
+    public VisualEffect effect;
+    public GameObject[] lights;
     public float[] timeBeforeUpgradeNeeded;
     public float damageTimer;
     private float currentDamageTimer;
@@ -19,6 +21,7 @@ public class EnvironmentDamage : MonoBehaviour
         shipStatus = GameObject.FindGameObjectWithTag("Player").GetComponent<ShipStatus>();
         currentDamageTimer = damageTimer;
         currentTime = 0;
+        effect.SetFloat("Intensity", 0);
     }
 
     // Update is called once per frame
@@ -30,6 +33,21 @@ public class EnvironmentDamage : MonoBehaviour
             {
                 ResetDamageTimer();
                 currentStep++;
+                switch(currentStep)
+                {
+                    case 1:
+                    effect.SetFloat("Intensity", 1000);
+                    break;
+
+                    case 2:
+                    effect.SetFloat("Intensity", 10000);
+                    break;
+
+                    case 3:
+                    lights[0].SetActive(false);
+                    lights[1].SetActive(true);
+                    break;
+                }
             }
 
         currentDamageTimer -= Time.deltaTime;
