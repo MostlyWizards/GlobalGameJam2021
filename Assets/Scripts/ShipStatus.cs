@@ -90,5 +90,9 @@ public class ShipStatus : MonoBehaviour
         renderers[currentUpgrade].SetActive(false);
         --currentUpgrade;
         renderers[currentUpgrade].SetActive(true);
+        GameObject.FindObjectOfType<EnvironmentDamage>().ResetDamageTimer();
     }
+
+    public int GetCurrentUpgrade() { return currentUpgrade; }
+    public void Damage(int value) { currentLife -= value; }
 }

@@ -835,6 +835,7 @@ GameObject:
   - component: {fileID: 2026174146}
   - component: {fileID: 2026174145}
   - component: {fileID: 2026174149}
+  - component: {fileID: 2026174150}
   m_Layer: 0
   m_Name: Water
   m_TagString: Untagged
@@ -932,6 +933,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedMultiplier: 3
+--- !u!114 &2026174150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026174144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 127e505a9c071ae44b6ad535607930d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBeforeUpgradeNeeded:
+  - 10
+  - 50
+  - 100
+  - 200
+  damageTimer: 10
 --- !u!1001 &1917942757653923746
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -954,42 +973,6 @@ PrefabInstance:
     - target: {fileID: 3688551837082470901, guid: 741cfa4a059357c4aa1ffefff5042de9, type: 3}
       propertyPath: m_TagString
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7980759656014240358, guid: 741cfa4a059357c4aa1ffefff5042de9, type: 3}
-      propertyPath: upgradeRequierements.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7980759656014240358, guid: 741cfa4a059357c4aa1ffefff5042de9, type: 3}
-      propertyPath: upgradeRequierements.Array.data[1].rope
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7980759656014240358, guid: 741cfa4a059357c4aa1ffefff5042de9, type: 3}
-      propertyPath: upgradeRequierements.Array.data[1].wood
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7980759656014240358, guid: 741cfa4a059357c4aa1ffefff5042de9, type: 3}
-      propertyPath: upgradeRequierements.Array.data[2].rope
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7980759656014240358, guid: 741cfa4a059357c4aa1ffefff5042de9, type: 3}
-      propertyPath: upgradeRequierements.Array.data[2].wood
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 7980759656014240358, guid: 741cfa4a059357c4aa1ffefff5042de9, type: 3}
-      propertyPath: upgradeRequierements.Array.data[3].rope
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7980759656014240358, guid: 741cfa4a059357c4aa1ffefff5042de9, type: 3}
-      propertyPath: upgradeRequierements.Array.data[3].wood
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 7980759656014240358, guid: 741cfa4a059357c4aa1ffefff5042de9, type: 3}
-      propertyPath: upgradeRequierements.Array.data[2].metal
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7980759656014240358, guid: 741cfa4a059357c4aa1ffefff5042de9, type: 3}
-      propertyPath: upgradeRequierements.Array.data[3].metal
-      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8897201253016173201, guid: 741cfa4a059357c4aa1ffefff5042de9, type: 3}
       propertyPath: m_RootOrder
