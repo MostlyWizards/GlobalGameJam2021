@@ -84,7 +84,7 @@ public class Player : MonoBehaviour
         if (reachableFish)
         {
             hunger += reachableFish.hungerValue;
-            reachableFish.Eated();
+            reachableFish.GetComponent<SpawnedLink>().Destroy();
         }
     }
 

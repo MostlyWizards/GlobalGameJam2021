@@ -109,8 +109,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cb6e3c827deb5644982d862d85d6e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woodPrefab: {fileID: 1576241483904747530, guid: 1c17c69af54fa264eb2b3e2adb93935c, type: 3}
-  metalPrefab: {fileID: 8552382830905780360, guid: 91f52ad51bc9da24082af791f1bc2492, type: 3}
-  ropePrefab: {fileID: 4246569159042598271, guid: 1c294165b3cb33b478be4765276ce729, type: 3}
-  spawnMinTimer: 2
-  spawnMaxTimer: 10
+  prefabs:
+  - {fileID: 1576241483904747530, guid: 1c17c69af54fa264eb2b3e2adb93935c, type: 3}
+  - {fileID: 8552382830905780360, guid: 91f52ad51bc9da24082af791f1bc2492, type: 3}
+  - {fileID: 4246569159042598271, guid: 1c294165b3cb33b478be4765276ce729, type: 3}
+  rnd: 320000005000000064000000
+  spawnMinTimer: 4
+  spawnMaxTimer: 7

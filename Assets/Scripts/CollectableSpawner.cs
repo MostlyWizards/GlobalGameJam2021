@@ -6,9 +6,8 @@ public class CollectableSpawner : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public GameObject woodPrefab; //Todo array?
-    public GameObject metalPrefab;
-    public GameObject ropePrefab;
+    public GameObject[] prefabs;
+    public int[] rnd;
 
     public float spawnMinTimer;
     public float spawnMaxTimer;
@@ -50,16 +49,10 @@ public class CollectableSpawner : MonoBehaviour
 
     GameObject PickPrefab()
     {
-        var pick = Random.Range(0, 3);
-        switch(pick)
-        {
-            case 0:
-            return woodPrefab;
-            case 1:
-            return metalPrefab;
-            case 2:
-            return ropePrefab;
-        }
-        return woodPrefab;
+        var pick = Random.Range(0, 100);
+        for (int i = 0; i < rnd.Length; ++i)
+            if (pick < rnd[i])
+                return prefabs[i];
+        return prefabs[0];
     }
 }

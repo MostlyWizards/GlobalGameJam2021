@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 5523005388644463813}
   - component: {fileID: 4571773317745216481}
   - component: {fileID: 7389186848462665290}
+  - component: {fileID: 5487035152080120289}
+  - component: {fileID: 418668999608175945}
   m_Layer: 0
   m_Name: Small Obstacle
   m_TagString: Untagged
@@ -109,3 +111,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 2
+--- !u!114 &5487035152080120289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956668616698573857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 176e8952428c8bc47aa90acef0d3f891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &418668999608175945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956668616698573857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cefe0383a17fd8047ba1a0e5b758be16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedMultiplier: 3
+  zLimits: -4

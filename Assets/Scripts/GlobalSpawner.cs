@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FishSpawner : MonoBehaviour
+public class GlobalSpawner : MonoBehaviour
 {
     // Start is called before the first frame update
     public Transform[] spawnAreas;
     private bool[] spawnedAreas;
-    public GameObject smallFish;
-    public GameObject mediumFish;
-    public GameObject bigFish;
+
+    public GameObject[] prefabs;
+    public int[] rnd;
 
     public float spawnTimerMin;
     public float spawnTimerMax;
@@ -34,17 +34,11 @@ public class FishSpawner : MonoBehaviour
 
     GameObject PickUp()
     {
-        var pick = Random.Range(0,3);
-        switch(pick)
-        {
-            case 0:
-            return smallFish;
-            case 1:
-            return mediumFish;
-            case 2:
-            return bigFish;
-        }
-        return smallFish;
+        var pick = Random.Range(0, 100);
+        for (int i = 0; i < rnd.Length; ++i)
+            if (pick < rnd[i])
+                return prefabs[i];
+        return prefabs[0];
     }
 
     public void RemoveOccupation(int id)
@@ -68,7 +62,7 @@ public class FishSpawner : MonoBehaviour
             areaId = Random.Range(0, spawnAreas.Length);
 
         var go = GameObject.Instantiate(fish, spawnAreas[areaId].position, spawnAreas[areaId].rotation);
-        var fishGO = go.GetComponent<Fish>();
+        var fishGO = go.GetComponent<SpawnedLink>();
         fishGO.SetPositionID(areaId);
         fishGO.SetSpawner(this);
         spawnedAreas[areaId] = true;

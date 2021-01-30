@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5255099065990560143}
   - component: {fileID: 3434481115431550157}
   - component: {fileID: 2249676633999192147}
+  - component: {fileID: 415010240690590130}
   m_Layer: 0
   m_Name: MediumFish
   m_TagString: Untagged
@@ -110,3 +111,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hungerValue: 20
+--- !u!114 &415010240690590130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5402871719243809256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 176e8952428c8bc47aa90acef0d3f891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
