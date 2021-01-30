@@ -7,21 +7,18 @@ public class Player : MonoBehaviour
 {
     public InputActionAsset actions;
 
-    public int lifeMax1;
-    public int lifeMax2;
-    public int lifeMax3;
+    
     public int startHunger;
 
     public int hungerLoss;
     private int hunger;
     private float hungerTimer;
 
-    private int currentLife;
     private int woodStock;
     private int metalStock;
     private int ropeStock;
 
-    private IEnumerator corroutine;
+
     private Fish reachableFish;
     
     // Start is called before the first frame update
@@ -30,9 +27,7 @@ public class Player : MonoBehaviour
         var map = actions.FindActionMap("Ship");
         map["Eat"].performed += OnEatFish;
 
-        currentLife = lifeMax1;
         hunger = startHunger;
-        corroutine = WasHitted();
         }
 
     // Update is called once per frame
@@ -70,16 +65,6 @@ public class Player : MonoBehaviour
             }
             Debug.Log("w : " + woodStock + " / m : " + metalStock + " / r : " + ropeStock);
         }
-        var obstacle = collision.gameObject.GetComponent<Obstacle>();
-        if (obstacle)
-        {
-            currentLife -= obstacle.size;
-            GetComponent<BoxCollider>().enabled = false;
-            GetComponent<Rigidbody>().velocity = Vector3.zero;
-            StartCoroutine(corroutine);
-        }
-        if (currentLife < 0)
-            UnityEditor.EditorApplication.ExitPlaymode();
     }
 
     void OnTriggerEnter(Collider collider)
@@ -92,13 +77,6 @@ public class Player : MonoBehaviour
         reachableFish = null;
     }
 
-    IEnumerator WasHitted()
-    {
-        // suspend execution for 5 seconds
-        yield return new WaitForSeconds(2);
-        GetComponent<BoxCollider>().enabled = true;
-    }
-
     public void OnEatFish(InputAction.CallbackContext context)
     {
         if (reachableFish)
@@ -107,4 +85,17 @@ public class Player : MonoBehaviour
             reachableFish.Eated();
         }
     }
+
+    public bool HasMaterials(materials mat)
+    {
+        return woodStock >= mat.wood && metalStock >= mat.metal && ropeStock >= mat.rope;
+    }
+
+    public void RemoveMaterials(materials mat)
+    {
+        woodStock -= mat.wood;
+        metalStock -= mat.metal;
+        ropeStock -= mat.rope;
+    }
+
 }
