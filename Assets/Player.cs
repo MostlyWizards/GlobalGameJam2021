@@ -1,12 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    public InputActionAsset actions;
+
     public int lifeMax1;
     public int lifeMax2;
     public int lifeMax3;
+    public int startHunger;
+
+    public int hungerLoss;
+    private int hunger;
+    private float hungerTimer;
 
     private int currentLife;
     private int woodStock;
@@ -14,17 +22,31 @@ public class Player : MonoBehaviour
     private int ropeStock;
 
     private IEnumerator corroutine;
+    private Fish reachableFish;
+    
     // Start is called before the first frame update
     void Start()
     {
+        var map = actions.FindActionMap("Ship");
+        map["Eat"].performed += OnEatFish;
+
         currentLife = lifeMax1;
+        hunger = startHunger;
         corroutine = WasHitted();
         }
 
     // Update is called once per frame
     void Update()
     {
-        
+        hungerTimer += Time.deltaTime;
+        if (hungerTimer > 1)
+        {
+            hunger -= hungerLoss;
+            Debug.Log(hunger);
+            --hungerTimer;
+        }
+        if (hunger <= 0)
+            UnityEditor.EditorApplication.ExitPlaymode();
     }
 
     void OnCollisionEnter(Collision collision)
@@ -60,11 +82,29 @@ public class Player : MonoBehaviour
             UnityEditor.EditorApplication.ExitPlaymode();
     }
 
+    void OnTriggerEnter(Collider collider)
+    {
+        reachableFish = collider.GetComponent<Fish>();
+    }
+
+    void OnTriggerExit(Collider collider)
+    {
+        reachableFish = null;
+    }
+
     IEnumerator WasHitted()
     {
         // suspend execution for 5 seconds
         yield return new WaitForSeconds(2);
         GetComponent<BoxCollider>().enabled = true;
-        Debug.Log("Done!");
+    }
+
+    public void OnEatFish(InputAction.CallbackContext context)
+    {
+        if (reachableFish)
+        {
+            hunger += reachableFish.hungerValue;
+            reachableFish.Eated();
+        }
     }
 }
