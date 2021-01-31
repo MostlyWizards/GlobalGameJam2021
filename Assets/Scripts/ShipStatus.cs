@@ -16,6 +16,10 @@ public class ShipStatus : MonoBehaviour
     public UnityEngine.UI.Slider healthBar;
     public TMPro.TextMeshProUGUI healthNumber;
 
+    public TMPro.TextMeshProUGUI woodRequirements;
+    public TMPro.TextMeshProUGUI metalRequirements;
+    public TMPro.TextMeshProUGUI ropeRequirements;
+
     public int[] lifeMax;
 
     public materials[] upgradeRequierements;
@@ -59,6 +63,7 @@ public class ShipStatus : MonoBehaviour
         }
 
         RefreshHealthDisplay();
+        RefreshRequirements();
     }
 
     void OnCollisionEnter(Collision collision)
@@ -118,4 +123,11 @@ public class ShipStatus : MonoBehaviour
 
     public int GetCurrentUpgrade() { return currentUpgrade; }
     public void Damage(int value) { currentLife -= value; RefreshHealthDisplay(); }
+
+    void RefreshRequirements()
+    {
+        woodRequirements.text = upgradeRequierements[currentUpgrade + 1].wood.ToString();
+        metalRequirements.text = upgradeRequierements[currentUpgrade + 1].metal.ToString();
+        ropeRequirements.text = upgradeRequierements[currentUpgrade + 1].rope.ToString();
+    }
 }

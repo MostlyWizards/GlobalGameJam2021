@@ -513,7 +513,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 456827185}
         m_TargetAssemblyTypeName: URLConnections, Assembly-CSharp
-        m_MethodName: GoToTwitter
+        m_MethodName: GoToInstagram
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

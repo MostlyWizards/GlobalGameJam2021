@@ -209,7 +209,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a9e7beb427eaf94bb95dc1c4b899aaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hungerValue: 10
+  hungerValue: 20
+  timer: 5
 --- !u!114 &3602041568015535677
 MonoBehaviour:
   m_ObjectHideFlags: 0
