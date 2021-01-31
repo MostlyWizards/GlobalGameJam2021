@@ -5,8 +5,6 @@ using UnityEngine.VFX;
 
 public class EnvironmentDamage : MonoBehaviour
 {
-    public UnityEngine.AudioClip[] musics;
-    private AudioSource audioSource;
     ShipStatus shipStatus;
     public VisualEffect effect;
     public GameObject[] lights;
@@ -24,9 +22,6 @@ public class EnvironmentDamage : MonoBehaviour
         currentDamageTimer = damageTimer;
         currentTime = 0;
         effect.SetFloat("Intensity", 0);
-        audioSource = GetComponent<AudioSource>();
-        audioSource.clip = musics[0];
-        audioSource.Play();
     }
 
     // Update is called once per frame
@@ -53,8 +48,6 @@ public class EnvironmentDamage : MonoBehaviour
                     lights[1].SetActive(true);
                     break;
                 }
-                audioSource.clip = musics[currentStep % musics.Length];
-                audioSource.Play();
             }
 
         currentDamageTimer -= Time.deltaTime;

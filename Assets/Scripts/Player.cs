@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    public UnityEngine.UI.Slider hungerBar;
     public InputActionAsset actions;
 
     
@@ -28,7 +27,6 @@ public class Player : MonoBehaviour
         var map = actions.FindActionMap("Ship");
         map["Eat"].performed += OnEatFish;
         hunger = startHunger;
-        RefreshHungerDisplay();
     }
 
     // Update is called once per frame
@@ -38,7 +36,7 @@ public class Player : MonoBehaviour
         if (hungerTimer > 1)
         {
             hunger -= hungerLoss;
-            RefreshHungerDisplay();
+            Debug.Log(hunger);
             --hungerTimer;
         }
         if (hunger <= 0)
@@ -86,7 +84,6 @@ public class Player : MonoBehaviour
         if (reachableFish)
         {
             hunger += reachableFish.hungerValue;
-            hunger = hunger > 100 ? 100 : hunger;
             reachableFish.GetComponent<SpawnedLink>().Destroy();
         }
     }
@@ -103,9 +100,4 @@ public class Player : MonoBehaviour
         ropeStock -= mat.rope;
     }
 
-    void RefreshHungerDisplay()
-    {
-        hungerBar.maxValue = 100;
-        hungerBar.value = hunger;
-    }
 }

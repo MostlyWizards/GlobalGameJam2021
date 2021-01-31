@@ -13,9 +13,6 @@ public struct materials
 
 public class ShipStatus : MonoBehaviour
 {
-    public UnityEngine.UI.Slider healthBar;
-    public TMPro.TextMeshProUGUI healthNumber;
-
     public int[] lifeMax;
 
     public materials[] upgradeRequierements;
@@ -34,9 +31,6 @@ public class ShipStatus : MonoBehaviour
         corroutine = WasHitted();
         currentLife = lifeMax[0];
         currentUpgrade = 0;
-        healthBar.maxValue = lifeMax[0];
-        healthBar.value = currentLife;
-        healthNumber.text = currentLife.ToString();
         renderers[0].SetActive(true);
         for (int i = 1; i < 4; ++i)
             renderers[i].SetActive(false);
@@ -51,14 +45,6 @@ public class ShipStatus : MonoBehaviour
     {
         if (currentUpgrade > 0 && currentLife < lifeMax[currentUpgrade - 1])
             Downgrade();
-
-        if (currentLife <= 0)
-        {
-            Debug.Log("Ship destroyed");
-            GameObject.FindObjectOfType<GameManager>().Lose();
-        }
-
-        RefreshHealthDisplay();
     }
 
     void OnCollisionEnter(Collision collision)
@@ -70,6 +56,11 @@ public class ShipStatus : MonoBehaviour
             GetComponent<BoxCollider>().enabled = false;
             GetComponent<Rigidbody>().velocity = Vector3.zero;
             StartCoroutine(corroutine);
+        }
+        if (currentLife < 0)
+        {
+            Debug.Log("Ship destroyed");
+            GameObject.FindObjectOfType<GameManager>().Lose();
         }
     }
 
@@ -85,13 +76,6 @@ public class ShipStatus : MonoBehaviour
         Upgrade();
     }
 
-    void RefreshHealthDisplay()
-    {
-        healthBar.maxValue = lifeMax[currentUpgrade];
-        healthBar.value = currentLife;
-        healthNumber.text = currentLife.ToString();
-    }
-
     void Upgrade()
     {
         if (!player.HasMaterials(upgradeRequierements[currentUpgrade+1]))
@@ -102,8 +86,6 @@ public class ShipStatus : MonoBehaviour
         renderers[currentUpgrade].SetActive(true);
         player.RemoveMaterials(upgradeRequierements[currentUpgrade]);
         currentLife = lifeMax[currentUpgrade];
-
-        RefreshHealthDisplay();
     }
 
     void Downgrade()
@@ -112,10 +94,8 @@ public class ShipStatus : MonoBehaviour
         --currentUpgrade;
         renderers[currentUpgrade].SetActive(true);
         GameObject.FindObjectOfType<EnvironmentDamage>().ResetDamageTimer();
-
-        RefreshHealthDisplay();
     }
 
     public int GetCurrentUpgrade() { return currentUpgrade; }
-    public void Damage(int value) { currentLife -= value; RefreshHealthDisplay(); }
+    public void Damage(int value) { currentLife -= value; }
 }
