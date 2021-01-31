@@ -20,6 +20,8 @@ public class ShipStatus : MonoBehaviour
     public TMPro.TextMeshProUGUI metalRequirements;
     public TMPro.TextMeshProUGUI ropeRequirements;
 
+    public GameObject upgradePanel;
+
     public int[] lifeMax;
 
     public materials[] upgradeRequierements;
@@ -64,6 +66,7 @@ public class ShipStatus : MonoBehaviour
 
         RefreshHealthDisplay();
         RefreshRequirements();
+        upgradePanel.SetActive(player.HasMaterials(upgradeRequierements[currentUpgrade+1]));
     }
 
     void OnCollisionEnter(Collision collision)

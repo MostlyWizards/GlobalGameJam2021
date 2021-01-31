@@ -10,6 +10,7 @@ public class EnvironmentDamage : MonoBehaviour
     ShipStatus shipStatus;
     public VisualEffect effect;
     public GameObject goal;
+    public GameObject alertPanel;
     public GameObject[] lights;
     public float[] timeBeforeUpgradeNeeded;
     public float damageTimer;
@@ -74,6 +75,7 @@ public class EnvironmentDamage : MonoBehaviour
             }
             currentDamageTimer += damageTimer;
         }
+        alertPanel.SetActive(shipStatus.GetCurrentUpgrade() < currentStep);
     }
 
     public void ResetDamageTimer()

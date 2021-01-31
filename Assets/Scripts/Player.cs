@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public TMPro.TextMeshProUGUI metalUI;
     public TMPro.TextMeshProUGUI ropeUI;
 
+    public GameObject catchPanel;
     public int startHunger;
 
     public int hungerLoss;
@@ -58,6 +59,8 @@ public class Player : MonoBehaviour
         var tmp = transform.position;
         tmp.y = 0.1f;
         transform.position = tmp;
+
+        catchPanel.SetActive(reachableFish != null);
     }
 
     void OnCollisionEnter(Collision collision)
@@ -84,7 +87,7 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        reachableFish = collider.GetComponent<Fish>();
+        reachableFish = collider.GetComponent<Fish>();            
     }
 
     void OnTriggerExit(Collider collider)
