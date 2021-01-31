@@ -60,7 +60,7 @@ public class ShipStatus : MonoBehaviour
         if (currentLife < 0)
         {
             Debug.Log("Ship destroyed");
-            UnityEditor.EditorApplication.ExitPlaymode();
+            GameObject.FindObjectOfType<GameManager>().Lose();
         }
     }
 

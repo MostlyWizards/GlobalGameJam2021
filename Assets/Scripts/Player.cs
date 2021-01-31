@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
         if (hunger <= 0)
         {
             Debug.Log("Hunger death");
-            UnityEditor.EditorApplication.ExitPlaymode();
+            GameObject.FindObjectOfType<GameManager>().Lose();
         }
     }
 
