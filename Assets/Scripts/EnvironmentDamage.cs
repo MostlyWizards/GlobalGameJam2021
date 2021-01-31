@@ -9,6 +9,7 @@ public class EnvironmentDamage : MonoBehaviour
     private AudioSource audioSource;
     ShipStatus shipStatus;
     public VisualEffect effect;
+    public GameObject goal;
     public GameObject[] lights;
     public float[] timeBeforeUpgradeNeeded;
     public float damageTimer;
@@ -46,11 +47,17 @@ public class EnvironmentDamage : MonoBehaviour
 
                     case 2:
                     effect.SetFloat("Intensity", 10000);
+                    lights[0].SetActive(false);
+                    lights[1].SetActive(true);
                     break;
 
                     case 3:
-                    lights[0].SetActive(false);
-                    lights[1].SetActive(true);
+                    lights[1].SetActive(false);
+                    lights[2].SetActive(true);
+                    break;
+
+                    case 4:
+                    goal.SetActive(true);
                     break;
                 }
                 audioSource.clip = musics[currentStep % musics.Length];
@@ -64,7 +71,6 @@ public class EnvironmentDamage : MonoBehaviour
             if (shipStatus.GetCurrentUpgrade() < currentStep)
             {
                 shipStatus.Damage(1);
-                Debug.Log("Env damage");
             }
             currentDamageTimer += damageTimer;
         }

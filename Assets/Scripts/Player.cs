@@ -8,7 +8,10 @@ public class Player : MonoBehaviour
     public UnityEngine.UI.Slider hungerBar;
     public InputActionAsset actions;
 
-    
+    public TMPro.TextMeshProUGUI woodUI;
+    public TMPro.TextMeshProUGUI metalUI;
+    public TMPro.TextMeshProUGUI ropeUI;
+
     public int startHunger;
 
     public int hungerLoss;
@@ -47,6 +50,10 @@ public class Player : MonoBehaviour
             GameObject.FindObjectOfType<GameManager>().Lose();
         }
 
+        woodUI.text = woodStock.ToString();
+        metalUI.text = metalStock.ToString();
+        ropeUI.text = ropeStock.ToString();
+
         // :(
         var tmp = transform.position;
         tmp.y = 0.1f;
@@ -72,7 +79,6 @@ public class Player : MonoBehaviour
                 ++ropeStock;
                 break;
             }
-            Debug.Log("w : " + woodStock + " / m : " + metalStock + " / r : " + ropeStock);
         }
     }
 
@@ -91,7 +97,7 @@ public class Player : MonoBehaviour
         if (reachableFish)
         {
             hunger += reachableFish.hungerValue;
-            hunger = hunger > 100 ? 100 : hunger;
+            hunger = hunger > 50 ? 50 : hunger;
             reachableFish.GetComponent<SpawnedLink>().Destroy();
         }
     }
@@ -110,7 +116,7 @@ public class Player : MonoBehaviour
 
     void RefreshHungerDisplay()
     {
-        hungerBar.maxValue = 100;
+        hungerBar.maxValue = 50;
         hungerBar.value = hunger;
     }
 }
