@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hungerValue: 30
+  timer: 5
 --- !u!114 &-9182645449654827341
 MonoBehaviour:
   m_ObjectHideFlags: 0

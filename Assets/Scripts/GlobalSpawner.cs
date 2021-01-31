@@ -61,7 +61,10 @@ public class GlobalSpawner : MonoBehaviour
         while (spawnedAreas[areaId])
             areaId = Random.Range(0, spawnAreas.Length);
 
-        var go = GameObject.Instantiate(fish, spawnAreas[areaId].position, spawnAreas[areaId].rotation);
+        var go = GameObject.Instantiate(fish);
+        var position = spawnAreas[areaId].position;
+        position.y = -0.1f;
+        go.transform.position = position;
         var fishGO = go.GetComponent<SpawnedLink>();
         fishGO.SetPositionID(areaId);
         fishGO.SetSpawner(this);

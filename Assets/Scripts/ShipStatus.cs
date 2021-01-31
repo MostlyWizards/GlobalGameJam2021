@@ -52,7 +52,7 @@ public class ShipStatus : MonoBehaviour
         if (currentUpgrade > 0 && currentLife < lifeMax[currentUpgrade - 1])
             Downgrade();
 
-        if (currentLife < 0)
+        if (currentLife <= 0)
         {
             Debug.Log("Ship destroyed");
             GameObject.FindObjectOfType<GameManager>().Lose();
