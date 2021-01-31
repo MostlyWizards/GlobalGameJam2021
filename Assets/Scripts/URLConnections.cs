@@ -18,11 +18,11 @@ public class URLConnections : MonoBehaviour
 
     public void GoToTwitter()
     {
-        Application.OpenURL("http://unity3d.com/");
+        Application.OpenURL("https://twitter.com/MostlyWizards");
     }
 
     public void GoToInstagram()
     {
-        Application.OpenURL("http://unity3d.com/");
+        Application.OpenURL("https://instagram.com/mostlywizards?igshid=1afiq72yplmrp");
     }
 }

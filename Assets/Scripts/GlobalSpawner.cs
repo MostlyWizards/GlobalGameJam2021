@@ -63,7 +63,6 @@ public class GlobalSpawner : MonoBehaviour
 
         var go = GameObject.Instantiate(fish);
         var position = spawnAreas[areaId].position;
-        position.y = -0.1f;
         go.transform.position = position;
         var fishGO = go.GetComponent<SpawnedLink>();
         fishGO.SetPositionID(areaId);

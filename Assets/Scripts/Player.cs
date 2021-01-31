@@ -46,6 +46,11 @@ public class Player : MonoBehaviour
             Debug.Log("Hunger death");
             GameObject.FindObjectOfType<GameManager>().Lose();
         }
+
+        // :(
+        var tmp = transform.position;
+        tmp.y = 0.1f;
+        transform.position = tmp;
     }
 
     void OnCollisionEnter(Collision collision)
